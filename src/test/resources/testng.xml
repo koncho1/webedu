@@ -1,5 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Parallel Test Suite" parallel="tests" thread-count="2">
+    <listeners>
+        <listener class-name="com.gui.ScreenshotListener"></listener>
+    </listeners>
+    <parameter name="browser" value="Chrome"/>
     <test name="Test1">
         <groups>
             <run>
@@ -10,14 +14,15 @@
             <class name="com.gui.HomePageTest"/>
         </classes>
     </test>
+    <parameter name="browser" value="Firefox"/>
     <test name="Test2">
         <groups>
             <run>
-                <include name="group2"/>
+                <include name="group1"/>
             </run>
         </groups>
         <classes>
-            <class name="com.gui.SearchPageTest"/>
+            <class name="com.gui.HomePageTest"/>
         </classes>
     </test>
 </suite>
